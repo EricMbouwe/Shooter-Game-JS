@@ -21,15 +21,14 @@
   },
   "homepage": "https://github.com/EricMbouwe/Shooter-Game-JS#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.2.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "stylelint": "^13.3.3",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-csstree-validator": "^1.8.0",
-    "stylelint-scss": "^3.17.2",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
     "html-loader": "^1.3.0",
     "html-webpack-plugin": "^4.3.0",
@@ -38,6 +37,10 @@
     "sass": "^1.26.10",
     "sass-loader": "^10.0.1",
     "style-loader": "^1.2.1",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.8.0",
+    "stylelint-scss": "^3.17.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
@@ -45,6 +48,7 @@
   },
   "dependencies": {
     "path": "^0.12.7",
+    "phaser": "^3.24.1",
     "terser-webpack-plugin": "^4.1.0"
   }
 }

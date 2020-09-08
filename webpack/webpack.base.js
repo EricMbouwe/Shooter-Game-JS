@@ -1,5 +1,7 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js'
+  },
 
   module: {
     rules: [
@@ -17,6 +19,23 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src/'),
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
+      }
     ],
   },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'typeof CANVAS_RENDERER': JSON.stringify(true),
+      'typeof WEBGL_RENDERER': JSON.stringify(true)
+    })
+  ]
 };
