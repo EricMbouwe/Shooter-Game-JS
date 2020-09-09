@@ -2,10 +2,10 @@ import './main.scss'
 import 'phaser';
 import { SimpleScene } from './scenes/simple-scene'
 
-const gameConfig = {
-  width: 680,
-  height: 400,
-  scene: SimpleScene
-};
+// const gameConfig = {
+//   width: 680,
+//   height: 600,
+//   scene: SimpleScene
+// };
 
-new Phaser.Game(gameConfig)
+// new Phaser.Game(gameConfig)
