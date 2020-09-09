@@ -12,7 +12,7 @@ module.exports = merge(base, {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.[contenthash].js',
+    filename: '[name].[contenthash].bundle.js',
   },
   optimization: {
     minimizer: [

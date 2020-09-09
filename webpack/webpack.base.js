@@ -1,6 +1,11 @@
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: {
-    app: './src/index.js'
+    'production-dependencies': ['phaser'],
+    main: './src/index.js',
   },
 
   module: {
@@ -15,7 +20,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[hash].[ext]',
-            outputPath: 'images',
+            outputPath: 'assets',
           },
         },
       },
@@ -36,6 +41,13 @@ module.exports = {
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true)
-    })
+    }),
+    new CopyWebpackPlugin(
+      {
+        patterns: [
+          { from: './src/assets', to: 'assets' }
+        ]
+      }
+    )
   ]
 };
