@@ -30,28 +30,28 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
-        }
+            presets: ['env'],
+          },
+        },
       },
       {
         test: [/\.vert$/, /\.frag$/],
-        use: 'raw-loader'
-      }
+        use: 'raw-loader',
+      },
     ],
   },
 
   plugins: [
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true)
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
     }),
     new CopyWebpackPlugin(
       {
         patterns: [
-          { from: './src/assets', to: 'assets' }
-        ]
-      }
-    )
-  ]
+          { from: './src/assets', to: 'assets' },
+        ],
+      },
+    ),
+  ],
 };
