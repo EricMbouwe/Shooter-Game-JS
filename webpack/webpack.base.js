@@ -33,6 +33,10 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: [/\.vert$/, /\.frag$/],
+        use: 'raw-loader'
       }
     ],
   },
