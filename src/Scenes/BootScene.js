@@ -6,7 +6,7 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('logo', 'assets/weather-mockup.png');
+    this.load.image('logo', 'assets/Background/background-4.png');
   }
 
   create() {
