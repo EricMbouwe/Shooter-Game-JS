@@ -146,6 +146,44 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+
+    // add collisions between game objects
+    // enemy vs playerLaser (1- check the state of objects)
+    this.physics.add.collider(this.playerLasers, this.enemies, function (
+      playerLaser,
+      enemy
+    ) {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+
+        enemy.explode(true);
+        playerLaser.destroy();
+      }
+    });
+
+    // enemy vs playerLaser (2- add a collider between this.player and this.enemies)
+    this.physics.add.overlap(this.player, this.enemies, function (
+      player,
+      enemy
+    ) {
+      if (!player.getData("isDead") && !enemy.getData("isDead")) {
+        player.explode(false);
+        enemy.explode(true);
+      }
+    });
+
+    // enemyLaser vs player (2- add a collider between this.player and this.enemies)
+    this.physics.add.overlap(this.player, this.enemyLasers, function (
+      player,
+      laser
+    ) {
+      if (!player.getData("isDead") && !laser.getData("isDead")) {
+        player.explode(false);
+        laser.destroy();
+      }
+    });
   }
 
   // spawn the chaser ship
@@ -194,6 +232,38 @@ export default class GameScene extends Phaser.Scene {
         }
       }
       enemy.update();
+    }
+
+    for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
+      var laser = this.enemyLasers.getChildren()[i];
+      laser.update();
+
+      if (
+        laser.x < -laser.displayWidth ||
+        laser.x > this.game.config.width + laser.displayWidth ||
+        laser.y < -laser.displayHeight * 4 ||
+        laser.y > this.game.config.height + laser.displayHeight
+      ) {
+        if (laser) {
+          laser.destroy();
+        }
+      }
+    }
+
+    for (var i = 0; i < this.playerLasers.getChildren().length; i++) {
+      var laser = this.playerLasers.getChildren()[i];
+      laser.update();
+
+      if (
+        laser.x < -laser.displayWidth ||
+        laser.x > this.game.config.width + laser.displayWidth ||
+        laser.y < -laser.displayHeight * 4 ||
+        laser.y > this.game.config.height + laser.displayHeight
+      ) {
+        if (laser) {
+          laser.destroy();
+        }
+      }
     }
   }
 }
