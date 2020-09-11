@@ -85,7 +85,7 @@ export default class GameScene extends Phaser.Scene {
       "sprPlayer"
     );
 
-    // initialize our key variables
+    // initialize moves key variables
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
