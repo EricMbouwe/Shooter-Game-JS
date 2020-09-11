@@ -94,6 +94,17 @@ export default class GameScene extends Phaser.Scene {
       Phaser.Input.Keyboard.KeyCodes.SPACE
     );
 
+    // allow the player to shoot
+    if (this.keySpace.isDown) {
+      this.player.setData("isShooting", true);
+    } else {
+      this.player.setData(
+        "timerShootTick",
+        this.player.getData("timerShootDelay") - 1
+      );
+      this.player.setData("isShooting", false);
+    }
+
     // create a Group to hold our enemies, the lasers shot by enemies, and the lasers shot by the player
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
@@ -162,6 +173,27 @@ export default class GameScene extends Phaser.Scene {
       this.player.moveLeft();
     } else if (this.keyD.isDown) {
       this.player.moveRight();
+    }
+
+    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+      var enemy = this.enemies.getChildren()[i];
+
+      // add frustum culling
+      if (
+        enemy.x < -enemy.displayWidth ||
+        enemy.x > this.game.config.width + enemy.displayWidth ||
+        enemy.y < -enemy.displayHeight * 4 ||
+        enemy.y > this.game.config.height + enemy.displayHeight
+      ) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+
+          enemy.destroy();
+        }
+      }
+      enemy.update();
     }
   }
 }
