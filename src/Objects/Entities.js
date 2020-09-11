@@ -75,6 +75,12 @@ class ChaserShip extends Entity {
         var speed = 100;
         this.body.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
       }
+
+      if (this.x < this.scene.player.x) {
+        this.angle -= 5;
+      } else {
+        this.angle += 5;
+      }
     }
   }
 }
