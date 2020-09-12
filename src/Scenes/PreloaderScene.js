@@ -86,6 +86,46 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image("box", "assets/ui/grey_box.png");
     this.load.image("checkedBox", "assets/ui/blue_boxCheckmark.png");
     this.load.audio("bgMusic", ["assets/TownTheme.mp3"]);
+
+    this.load.image('logo', 'assets/zenva_logo.png');
+    this.load.image("sprBtnPlay", "assets/sprBtnPlay.png");
+    this.load.image("sprBtnPlayHover", "assets/sprBtnPlayHover.png");
+    this.load.image("sprBtnPlayDown", "assets/sprBtnPlayDown.png");
+    this.load.image("sprBtnRestart", "assets/sprBtnRestart.png");
+    this.load.image("sprBtnRestartHover", "assets/sprBtnRestartHover.png");
+    this.load.image("sprBtnRestartDown", "assets/sprBtnRestartDown.png");
+
+    this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
+    this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
+
+    // load images
+    this.load.image("sprBg0", "assets/sprBg0.png");
+    this.load.image("sprBg1", "assets/sprBg1.png");
+    this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
+    this.load.spritesheet("sprEnemy0", "assets/sprEnemy0.png", {
+      frameWidth: 16,
+      frameHeight: 16,
+    });
+    this.load.image("sprEnemy1", "assets/sprEnemy1.png");
+    this.load.spritesheet("sprEnemy2", "assets/sprEnemy2.png", {
+      frameWidth: 16,
+      frameHeight: 16,
+    });
+    this.load.image("sprLaserEnemy0", "assets/sprLaserEnemy0.png");
+    this.load.image("sprLaserPlayer", "assets/sprLaserPlayer.png");
+    this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
+      frameWidth: 16,
+      frameHeight: 16,
+    });
+
+    //load sounds
+    this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
+    this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
+    this.load.audio("sndLaser", "assets/Cannon+2.mp3");
+
   }
 
   ready() {
