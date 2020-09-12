@@ -24,4 +24,13 @@ export default class ScrollingBackground {
       this.layers.add(layer);
     }
   }
+
+  update() {
+    if (this.layers.getChildren()[0].y > 0) {
+      for (var i = 0; i < this.layers.getChildren().length; i++) {
+        var layer = this.layers.getChildren()[i];
+        layer.y = (-layer.displayHeight) + (layer.displayHeight * i);
+      }
+    }
+  }
 }

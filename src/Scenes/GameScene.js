@@ -212,6 +212,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
+    for (var i = 0; i < this.backgrounds.length; i++) {
+      this.backgrounds[i].update();
+    }
+    
     if (!this.player.getData("isDead")) {
       this.player.update();
       if (this.keyW.isDown) {
