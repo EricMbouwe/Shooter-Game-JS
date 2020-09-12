@@ -183,17 +183,19 @@ export default class GameScene extends Phaser.Scene {
     ) {
       if (!player.getData("isDead") && !enemy.getData("isDead")) {
         player.explode(false);
+        player.onDestroy();
         enemy.explode(true);
       }
     });
 
-    // enemyLaser vs player (2- add a collider between this.player and this.enemies)
+    // enemyLaser vs player (2- add a collider between this.player and this.enemiesLasers)
     this.physics.add.overlap(this.player, this.enemyLasers, function (
       player,
       laser
     ) {
       if (!player.getData("isDead") && !laser.getData("isDead")) {
         player.explode(false);
+        player.onDestroy();
         laser.destroy();
       }
     });
