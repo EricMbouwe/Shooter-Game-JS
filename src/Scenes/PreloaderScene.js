@@ -79,7 +79,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
+    // load assets needed in our game(preloader assets)
     this.load.image("blueButton1", "assets/ui/blue_button02.png");
     this.load.image("blueButton2", "assets/ui/blue_button03.png");
     this.load.image("phaserLogo", "assets/logo.png");
@@ -87,6 +87,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image("checkedBox", "assets/ui/blue_boxCheckmark.png");
     this.load.audio("bgMusic", ["assets/TownTheme.mp3"]);
 
+    // load assets Title scene
     this.load.image('logo', 'assets/zenva_logo.png');
     this.load.image("sprBtnPlay", "assets/sprBtnPlay.png");
     this.load.image("sprBtnPlayHover", "assets/sprBtnPlayHover.png");
@@ -98,7 +99,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
     this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
 
-    // load images
+    // load images Game scene
     this.load.image("sprBg0", "assets/sprBg0.png");
     this.load.image("sprBg1", "assets/sprBg1.png");
     this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
@@ -121,7 +122,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 16,
     });
 
-    //load sounds
+    //load sounds game scene
     this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
     this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
     this.load.audio("sndLaser", "assets/Cannon+2.mp3");
