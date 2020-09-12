@@ -1,4 +1,10 @@
 import "phaser";
+import Player from "../Objects//Hero/Player";
+import PlayerLaser from "../Objects/Hero/PlayerLaser";
+import EnemyLaser from "../Objects/Enemies/EnemyLaser";
+import ChaserShip from "../Objects/Enemies/ChaserShip";
+import GunShip from "../Objects/Enemies/GunShip";
+import CarrierShip from "../Objects/Enemies/CarrierShip";
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -7,39 +13,40 @@ export default class GameScene extends Phaser.Scene {
 
   preload() {
     // load images
-    this.load.image("logo", "assets/logo.png");
-    this.load.image("sprBg0", "assets/sprBg0.png");
-    this.load.image("sprBg0", "assets/sprBg0.png");
-    this.load.image("sprBg1", "assets/sprBg1.png");
-    this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
-    this.load.spritesheet("sprEnemy0", "assets/sprEnemy0.png", {
+    this.load.image("darkPurpleBg", "assets/Background/darkPurpleBg.png");
+    this.load.image("purpleBg", "assets/Background/purpleBg.png");
+    this.load.spritesheet(
+      "sprExplosion",
+      "assets/Damage/playerShip1_damage3.png",
+      {
+        frameWidth: 32,
+        frameHeight: 32,
+      }
+    );
+    this.load.spritesheet("sprEnemy0", "assets/Enemies/enemyBlack1.png", {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image("sprEnemy1", "assets/sprEnemy1.png");
-    this.load.spritesheet("sprEnemy2", "assets/sprEnemy2.png", {
+    this.load.image("sprEnemy1", "assets/Enemies/enemyRed3.png");
+    this.load.spritesheet("sprEnemy2", "assets/Enemies/enemyGreen2.png", {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image("sprLaserEnemy0", "assets/sprLaserEnemy0.png");
-    this.load.image("sprLaserPlayer", "assets/sprLaserPlayer.png");
-    this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
+    this.load.image("sprLaserEnemy0", "assets/Lasers/laserBlue08.png");
+    this.load.image("sprLaserPlayer", "assets/Lasers/laserGreen15.png");
+    this.load.spritesheet("sprPlayer", "assets/Hero/playerShip1_orange.png", {
       frameWidth: 16,
       frameHeight: 16,
     });
 
     //load sounds
-    this.load.audio("sndExplode0", "assets/sndExplode0.wav");
-    this.load.audio("sndExplode1", "assets/sndExplode1.wav");
-    this.load.audio("sndLaser", "assets/sndLaser.wav");
+    this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
+    this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
+    this.load.audio("sndLaser", "assets/Cannon+2.mp3");
   }
 
   create() {
     // create our animations
-    this.add.image(400, 300, "logo");
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -199,20 +206,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    // this.player.update();
-
-    // if (this.keyW.isDown) {
-    //   this.player.moveUp();
-    // } else if (this.keyS.isDown) {
-    //   this.player.moveDown();
-    // }
-
-    // if (this.keyA.isDown) {
-    //   this.player.moveLeft();
-    // } else if (this.keyD.isDown) {
-    //   this.player.moveRight();
-    // }
-
     if (!this.player.getData("isDead")) {
       this.player.update();
       if (this.keyW.isDown) {
@@ -239,6 +232,7 @@ export default class GameScene extends Phaser.Scene {
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {
       var enemy = this.enemies.getChildren()[i];
+      enemy.update();
 
       // add frustum culling
       if (
@@ -255,7 +249,6 @@ export default class GameScene extends Phaser.Scene {
           enemy.destroy();
         }
       }
-      enemy.update();
     }
 
     for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
