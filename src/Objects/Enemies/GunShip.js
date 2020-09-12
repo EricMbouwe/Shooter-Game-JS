@@ -1,5 +1,6 @@
 import "phaser";
 import Entity from "../Entities";
+import EnemyLaser from "./EnemyLaser";
 
 export default class GunShip extends Entity {
   constructor(scene, x, y) {

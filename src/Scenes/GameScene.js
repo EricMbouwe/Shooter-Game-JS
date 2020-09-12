@@ -1,7 +1,5 @@
 import "phaser";
 import Player from "../Objects//Hero/Player";
-import PlayerLaser from "../Objects/Hero/PlayerLaser";
-import EnemyLaser from "../Objects/Enemies/EnemyLaser";
 import ChaserShip from "../Objects/Enemies/ChaserShip";
 import GunShip from "../Objects/Enemies/GunShip";
 import CarrierShip from "../Objects/Enemies/CarrierShip";
@@ -235,20 +233,20 @@ export default class GameScene extends Phaser.Scene {
       enemy.update();
 
       // add frustum culling
-      if (
-        enemy.x < -enemy.displayWidth ||
-        enemy.x > this.game.config.width + enemy.displayWidth ||
-        enemy.y < -enemy.displayHeight * 4 ||
-        enemy.y > this.game.config.height + enemy.displayHeight
-      ) {
-        if (enemy) {
-          if (enemy.onDestroy !== undefined) {
-            enemy.onDestroy();
-          }
+      // if (
+      //   enemy.x < -enemy.displayWidth ||
+      //   enemy.x > this.game.config.width + enemy.displayWidth ||
+      //   enemy.y < -enemy.displayHeight * 4 ||
+      //   enemy.y > this.game.config.height + enemy.displayHeight
+      // ) {
+      //   if (enemy) {
+      //     if (enemy.onDestroy !== undefined) {
+      //       enemy.onDestroy();
+      //     }
 
-          enemy.destroy();
-        }
-      }
+      //     enemy.destroy();
+      //   }
+      // }
     }
 
     for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {

@@ -1,5 +1,6 @@
 import "phaser";
 import Entity from "../Entities";
+import PlayerLaser from "./PlayerLaser";
 
 export default class Player extends Entity {
   constructor(scene, x, y, key, type) {
