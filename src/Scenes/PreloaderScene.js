@@ -88,7 +88,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("bgMusic", ["assets/TownTheme.mp3"]);
 
     // load assets Title scene
-    this.load.image("sprteBg0", "assets/Background/Background-1.png");
+    this.load.image("sprteBg0", "assets/Background/Background-2.png");
     this.load.image("sprteBg1", "assets/Background/Background-4.png");
     this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
     this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");

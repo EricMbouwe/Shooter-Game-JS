@@ -9,17 +9,11 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   /* preload() {
-    this.load.image("sprBg0", "content/sprBg0.png");
-    this.load.image("sprBg1", "content/sprBg1.png");
-    this.load.image("sprBtnPlay", "content/sprBtnPlay.png");
-    this.load.image("sprBtnPlayHover", "content/sprBtnPlayHover.png");
-    this.load.image("sprBtnPlayDown", "content/sprBtnPlayDown.png");
-    this.load.image("sprBtnRestart", "content/sprBtnRestart.png");
-    this.load.image("sprBtnRestartHover", "content/sprBtnRestartHover.png");
-    this.load.image("sprBtnRestartDown", "content/sprBtnRestartDown.png");
+    this.load.image("sprBg0", "assets/sprBg0.png");
+    this.load.image("sprBg1", "assets/sprBg1.png");
 
-    this.load.audio("sndBtnOver", "content/sndBtnOver.wav");
-    this.load.audio("sndBtnDown", "content/sndBtnDown.wav");
+    this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
+    this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
   }*/
 
 
@@ -82,14 +76,6 @@ export default class GameOverScene extends Phaser.Scene {
       "Leaderboard",
       "Credits"
     );
-
-    // this.model = this.sys.game.globals.model;
-    // if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
-    //   this.bgMusic = this.sound.add("bgMusic", { volume: 0.1, loop: true });
-    //   this.bgMusic.play();
-    //   this.model.bgMusicPlaying = true;
-    //   this.sys.game.globals.bgMusic = this.bgMusic;
-    // }
   }
 
   update() {
