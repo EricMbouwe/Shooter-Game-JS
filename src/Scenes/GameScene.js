@@ -1,5 +1,6 @@
 import "phaser";
-import Player from "../Objects//Hero/Player";
+import ScrollingBackground from "../Objects/ScrollingBackground"
+import Player from "../Objects/Hero/Player";
 import ChaserShip from "../Objects/Enemies/ChaserShip";
 import GunShip from "../Objects/Enemies/GunShip";
 import CarrierShip from "../Objects/Enemies/CarrierShip";
@@ -81,6 +82,13 @@ export default class GameScene extends Phaser.Scene {
       ],
       laser: this.sound.add("sndLaser"),
     };
+
+    // initialize the scrolling background
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
 
     // create a player
     this.player = new Player(
