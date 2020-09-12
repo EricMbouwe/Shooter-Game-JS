@@ -88,14 +88,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("bgMusic", ["assets/TownTheme.mp3"]);
 
     // load assets Title scene
-    this.load.image('logo', 'assets/zenva_logo.png');
-    this.load.image("sprBtnPlay", "assets/sprBtnPlay.png");
-    this.load.image("sprBtnPlayHover", "assets/sprBtnPlayHover.png");
-    this.load.image("sprBtnPlayDown", "assets/sprBtnPlayDown.png");
-    this.load.image("sprBtnRestart", "assets/sprBtnRestart.png");
-    this.load.image("sprBtnRestartHover", "assets/sprBtnRestartHover.png");
-    this.load.image("sprBtnRestartDown", "assets/sprBtnRestartDown.png");
-
+    this.load.image("sprteBg0", "assets/Background/Background-1.png");
+    this.load.image("sprteBg1", "assets/Background/Background-4.png");
     this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
     this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
 
@@ -110,7 +104,8 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image("sprEnemy1", "assets/sprEnemy1.png");
+    //this.load.image("sprEnemy1", "assets/sprEnemy1.png"); chasership
+    this.load.image("sprEnemy1", "assets/Meteors/meteorGrey_tiny1.png");
     this.load.spritesheet("sprEnemy2", "assets/sprEnemy2.png", {
       frameWidth: 16,
       frameHeight: 16,
@@ -126,7 +121,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
     this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
     this.load.audio("sndLaser", "assets/Cannon+2.mp3");
-
   }
 
   ready() {
