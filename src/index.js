@@ -1,4 +1,5 @@
 import 'phaser';
+import './main.scss'
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
 import GameOverScene from './Scenes/GameOverScene';
