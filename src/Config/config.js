@@ -5,6 +5,7 @@ export default {
   parent: "phaser-example",
   width: 800,
   height: 600,
+  autoCenter: Phaser.Scale.CENTER_BOTH,
   backgroundColor: "black",
   physics: {
     default: "arcade",
