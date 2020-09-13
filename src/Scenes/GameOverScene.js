@@ -1,11 +1,11 @@
-import "phaser";
-import config from "../Config/config";
-import Button from "../Objects/Button";
-import ScrollingBackground from "../Objects/ScrollingBackground"
+import Phaser from 'phaser';
+import config from '../Config/config';
+import Button from '../Objects/Button';
+import ScrollingBackground from '../Objects/ScrollingBackground';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
-    super("GameOver");
+    super('GameOver');
   }
 
   /* preload() {
@@ -14,32 +14,32 @@ export default class GameOverScene extends Phaser.Scene {
 
     this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
     this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
-  }*/
+  } */
 
 
   create() {
     // sound effect object
     this.sfx = {
-      btnOver: this.sound.add("sndBtnOver"),
-      btnDown: this.sound.add("sndBtnDown")
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
     };
 
     // add scrolling background
     this.backgrounds = [];
-    for (var i = 0; i < 5; i++) {
-      var keys = ["sprBg0", "sprBg1"];
-      var key = keys[Phaser.Math.Between(0, keys.length - 1)];
-      var bg = new ScrollingBackground(this, key, i * 10);
+    for (let i = 0; i < 5; i++) {
+      const keys = ['sprBg0', 'sprBg1'];
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
+      const bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);
     }
 
     // Title
-    this.title = this.add.text(this.game.config.width * 0.5, 128, "GAME OVER", {
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
-      align: 'center'
+      align: 'center',
     });
 
     this.title.setOrigin(0.5);
@@ -49,10 +49,10 @@ export default class GameOverScene extends Phaser.Scene {
       this,
       config.width / 2,
       config.height / 2 - 100,
-      "blueButton1",
-      "blueButton2",
-      "Restart",
-      "Game"
+      'blueButton1',
+      'blueButton2',
+      'Restart',
+      'Game',
     );
 
     // Exit
@@ -60,10 +60,10 @@ export default class GameOverScene extends Phaser.Scene {
       this,
       config.width / 2,
       config.height / 2,
-      "blueButton1",
-      "blueButton2",
-      "Exit",
-      "Title"
+      'blueButton1',
+      'blueButton2',
+      'Exit',
+      'Title',
     );
 
     // LeaderBoard
@@ -71,15 +71,15 @@ export default class GameOverScene extends Phaser.Scene {
       this,
       config.width / 2,
       config.height / 2 + 100,
-      "blueButton1",
-      "blueButton2",
-      "Leaderboard",
-      "Credits"
+      'blueButton1',
+      'blueButton2',
+      'Leaderboard',
+      'Credits',
     );
   }
 
   update() {
-    for (var i = 0; i < this.backgrounds.length; i++) {
+    for (let i = 0; i < this.backgrounds.length; i++) {
       this.backgrounds[i].update();
     }
   }
@@ -91,8 +91,8 @@ export default class GameOverScene extends Phaser.Scene {
         config.width / 2,
         config.height / 2 - offset * 100,
         config.width,
-        config.height
-      )
+        config.height,
+      ),
     );
   }
 
