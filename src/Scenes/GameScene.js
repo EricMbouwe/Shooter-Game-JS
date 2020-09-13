@@ -10,7 +10,7 @@ export default class GameScene extends Phaser.Scene {
     super('Game');
   }
 
-  preload() {
+  /* preload() {
     // // load images
     // this.load.image("sprBg0", "assets/sprBg0.png");
     // this.load.image("sprBg1", "assets/sprBg1.png");
@@ -38,7 +38,7 @@ export default class GameScene extends Phaser.Scene {
     // this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
     // this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
     // this.load.audio("sndLaser", "assets/Cannon+2.mp3");
-  }
+  } */
 
   create() {
     // create our animations
@@ -81,7 +81,7 @@ export default class GameScene extends Phaser.Scene {
 
     // initialize the scrolling background
     this.backgrounds = [];
-    for (let i = 0; i < 5; i++) { // create five scrolling backgrounds
+    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
@@ -114,7 +114,8 @@ export default class GameScene extends Phaser.Scene {
       this.player.setData('isShooting', false);
     }
 
-    // create a Group to hold our enemies, the lasers shot by enemies, and the lasers shot by the player
+    // create a Group to hold our enemies, the lasers shot by enemies,
+    // and the lasers shot by the player
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
@@ -200,9 +201,9 @@ export default class GameScene extends Phaser.Scene {
   // spawn the chaser ship
   getEnemiesByType(type) {
     const arr = [];
-    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
-      if (enemy.getData('type') == type) {
+      if (enemy.getData('type') === type) {
         arr.push(enemy);
       }
     }
@@ -210,7 +211,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    for (var i = 0; i < this.backgrounds.length; i++) {
+    for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
 
@@ -238,7 +239,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
       enemy.update();
 
@@ -259,8 +260,8 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
-      var laser = this.enemyLasers.getChildren()[i];
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
+      const laser = this.enemyLasers.getChildren()[i];
       laser.update();
 
       if (
@@ -275,8 +276,8 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.playerLasers.getChildren().length; i++) {
-      var laser = this.playerLasers.getChildren()[i];
+    for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
+      const laser = this.playerLasers.getChildren()[i];
       laser.update();
 
       if (
