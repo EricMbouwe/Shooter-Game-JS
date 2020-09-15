@@ -27,7 +27,7 @@ A video game using JavaScript and the game engine Phaser
 <br />
 <p align="center">
   <a href="https://github.com/ericmbouwe/shooter-game-js">
-    <img src="src/microverse.png" alt="Microverse Logo" width="80" height="80">
+    <img src="src/assets/microverse.png" alt="Microverse Logo" width="80" height="80">
   </a>
   
   <h3 align="center">The Shooter Game Application</h3>
