@@ -42,6 +42,8 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     // create our animations
+    this.scene.stop("InputPanel");
+    
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
