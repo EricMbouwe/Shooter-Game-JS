@@ -165,30 +165,38 @@ Game scenes:
 
 <hr/>
 
-## Development
+## Development and Dependencies
 
 - Clone the project
 
 ```
-  https://github.com/ericmbouwe/shooter-game-js.git
+  git clone https://github.com/ericmbouwe/shooter-game-js.git
 
   Use VSCode and Live Server to show index.html
-  Since webpack is used, run 'npm run build' on you terminal before opening
+
+```
+
+- Since webpack is used, In your terminal run
+
+```
+npm install
+
+npm run dev
+
+npm run build
+
+npm start
 ```
 
 <hr/>
 
-## Dependencies
+## Tests
 
-please run
+In your terminal, run
 
 ```
-  npm install
+npm jest
 ```
-
-to comply with the dependencies held in package.json
-
-<hr/>
 
 ## Built With
 
@@ -203,6 +211,7 @@ This project was built using these technologies.
 - Git - GitHub
 - ESLint
 - Stylelint
+- Jest
 
 <hr/>
 
