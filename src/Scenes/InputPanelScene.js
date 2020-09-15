@@ -16,15 +16,13 @@ export default class InputPanelScene extends Phaser.Scene {
     this.block;
 
     this.name = "";
-    this.charLimit = 3;
+    this.charLimit = 5;
   }
 
   preload() {
     this.load.image("block", "assets/block.png");
     this.load.image("rub", "assets/rub.png");
     this.load.image("end", "assets/end.png");
-
-    this.load.bitmapFont("arcade", "assets/arcade.png", "assets/arcade.xml");
   }
 
   create() {

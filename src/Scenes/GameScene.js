@@ -10,40 +10,13 @@ export default class GameScene extends Phaser.Scene {
     super("Game");
   }
 
-  /* preload() {
-    // // load images
-    // this.load.image("sprBg0", "assets/sprBg0.png");
-    // this.load.image("sprBg1", "assets/sprBg1.png");
-    // this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
-    //   frameWidth: 32,
-    //   frameHeight: 32,
-    // });
-    // this.load.spritesheet("sprEnemy0", "assets/sprEnemy0.png", {
-    //   frameWidth: 16,
-    //   frameHeight: 16,
-    // });
-    // this.load.image("sprEnemy1", "assets/sprEnemy1.png");
-    // this.load.spritesheet("sprEnemy2", "assets/sprEnemy2.png", {
-    //   frameWidth: 16,
-    //   frameHeight: 16,
-    // });
-    // this.load.image("sprLaserEnemy0", "assets/sprLaserEnemy0.png");
-    // this.load.image("sprLaserPlayer", "assets/sprLaserPlayer.png");
-    // this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
-    //   frameWidth: 16,
-    //   frameHeight: 16,
-    // });
-
-    // //load sounds
-    // this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
-    // this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
-    // this.load.audio("sndLaser", "assets/Cannon+2.mp3");
-  } */
-
   create() {
-    // create our animations
     this.scene.stop("InputPanel");
-    
+
+    this.score = 0;
+    this.scoreLabel = this.add.bitmapText(10, 5, "arcade", "SCORE", 18);
+
+    // create our animations
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -187,6 +160,8 @@ export default class GameScene extends Phaser.Scene {
 
           enemy.explode(true);
           playerLaser.destroy();
+          this.score += 100;
+          this.scoreLabel.text = `SCORE ${this.score}`;
         }
       }
     );
@@ -199,7 +174,7 @@ export default class GameScene extends Phaser.Scene {
         enemy.explode(true);
       }
     });
-
+    
     // enemyLaser vs player (2- add a collider between this.player and this.enemiesLasers)
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData("isDead") && !laser.getData("isDead")) {

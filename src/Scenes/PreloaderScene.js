@@ -89,7 +89,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // load assets Title scene
     this.load.image("sprteBg0", "assets/Background/Background-2.png");
-    this.load.image("sprteBg1", "assets/Background/desert.png");
+    this.load.image("sprteBg1", "assets/Background/Background-4.png");
     this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
     this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
 
@@ -121,6 +121,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("sndExplode0", "assets/Explosion+2.mp3");
     this.load.audio("sndExplode1", "assets/Cannon+2.mp3");
     this.load.audio("sndLaser", "assets/Cannon+2.mp3");
+
+    this.load.bitmapFont("arcade", "assets/arcade.png", "assets/arcade.xml");
   }
 
   ready() {

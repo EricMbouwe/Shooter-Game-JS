@@ -5,6 +5,7 @@ import GameScene from "./Scenes/GameScene";
 import GameOverScene from "./Scenes/GameOverScene";
 import InputPanelScene from "./Scenes/InputPanelScene";
 import LeaderboardScene from "./Scenes/LeaderboardScene";
+import Starfield from "./Scenes/Starfield";
 import BootScene from "./Scenes/BootScene";
 import PreloaderScene from "./Scenes/PreloaderScene";
 import TitleScene from "./Scenes/TitleScene";
@@ -26,6 +27,7 @@ class Game extends Phaser.Game {
     this.scene.add("GameOver", GameOverScene);
     this.scene.add("InputPanel", InputPanelScene);
     this.scene.add("Leaderboard", LeaderboardScene);
+    this.scene.add("Starfield", Starfield);
     this.scene.start("Boot");
   }
 }

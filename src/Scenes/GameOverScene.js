@@ -30,13 +30,17 @@ export default class GameOverScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    // Set the player text
-    this.playerText = this.add
-      .bitmapText(580, 310, "arcade", "")
-      .setTint(0xff0000);
-
     // start input scene
     this.scene.launch("InputPanel");
+
+    // Set the player text
+    // this.playerText = this.add
+    //   .bitmapText(580, 310, "arcade", "")
+    //   .setTint(0xff0000);
+
+    this.playerText = this.add
+      .bitmapText(350, 260, "arcade", "NAME", 20)
+      .setTint(0xff0000);
 
     //  Do this, otherwise this Scene will steal all keyboard input
     this.input.keyboard.enabled = false; //input
@@ -82,20 +86,17 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   submitName() {
-    this.scene.stop("InputPanel");
     // call the score api to add the new score of the current player
+
+    // populate the leaderboard
+    
+    this.scene.stop("InputPanel");
     this.add
       .bitmapText(100, 360, "arcade", "2ND   40000    ANT")
       .setTint(0xff8200);
-    this.add
-      .bitmapText(100, 410, "arcade", "3RD   30000    .-.")
-      .setTint(0xffff00);
-    this.add
-      .bitmapText(100, 460, "arcade", "4TH   20000    BOB")
-      .setTint(0x00ff00);
-    this.add
-      .bitmapText(100, 510, "arcade", "5TH   10000    ZIK")
-      .setTint(0x00bfff);
+
+    // start the leaderboard scene
+    this.scene.start('Leaderboard')
   }
 
   updateName(name) {
@@ -106,21 +107,5 @@ export default class GameOverScene extends Phaser.Scene {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
-  }
-
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(
-        config.width / 2,
-        config.height / 2 - offset * 100,
-        config.width,
-        config.height
-      )
-    );
-  }
-
-  centerButtonText(gameText, RestartButton) {
-    Phaser.Display.Align.In.Center(gameText, RestartButton);
   }
 }

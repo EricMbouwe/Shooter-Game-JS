@@ -8,17 +8,10 @@ export default class TitleScene extends Phaser.Scene {
     super("Title");
   }
 
-  /* preload() {
-    this.load.image("sprBg0", "assets/sprBg0.png");
-    this.load.image("sprBg1", "assets/sprBg1.png");
-
-    this.load.audio("sndBtnOver", "assets/sndBtnOver.wav");
-    this.load.audio("sndBtnDown", "assets/sndBtnDown.wav");
-  } */
-
   create() {
     this.scene.stop("InputPanel");
-    
+    this.scene.stop("Starfield");
+
     // sound effect object
     this.sfx = {
       btnOver: this.sound.add("sndBtnOver"),
@@ -28,7 +21,7 @@ export default class TitleScene extends Phaser.Scene {
     // add scrolling background
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
-      const keys = ["sprteBg0", "sprBg1"];
+      const keys = ["sprteBg0", "sprBg0"];
       const key = keys[Phaser.Math.Between(0, keys.length - 1)];
       const bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);
@@ -37,7 +30,7 @@ export default class TitleScene extends Phaser.Scene {
     // Title
     this.title = this.add.text(
       this.game.config.width * 0.5,
-      128,
+      90,
       "SPACE SHOOTER",
       {
         fontFamily: "monospace",
@@ -46,9 +39,7 @@ export default class TitleScene extends Phaser.Scene {
         color: "#ffffff",
         align: "center",
       }
-    );
-
-    this.title.setOrigin(0.5);
+    ).setOrigin(0.5);
 
     // Game
     this.gameButton = new Button(
@@ -107,21 +98,5 @@ export default class TitleScene extends Phaser.Scene {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
-  }
-
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(
-        config.width / 2,
-        config.height / 2 - offset * 100,
-        config.width,
-        config.height
-      )
-    );
-  }
-
-  centerButtonText(gameText, gameButton) {
-    Phaser.Display.Align.In.Center(gameText, gameButton);
   }
 }
