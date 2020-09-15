@@ -2,7 +2,7 @@ import Phaser from "phaser";
 
 export default class InputPanelScene extends Phaser.Scene {
   constructor() {
-    super({ key: "InputPanel", active: false });
+    super("InputPanel");
 
     this.chars = [
       ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
@@ -76,24 +76,17 @@ export default class InputPanelScene extends Phaser.Scene {
     this.block.y = this.text.y - 2 + y * 64;
 
     if (x === 9 && y === 2 && nameLength > 0) {
-      //  Submit
       this.events.emit("submitName", this.name);
     } else if (x === 8 && y === 2 && nameLength > 0) {
-      //  Rub
       this.name = this.name.substr(0, nameLength - 1);
-
       this.events.emit("updateName", this.name);
     } else if (this.name.length < this.charLimit) {
-      //  Add
       this.name = this.name.concat(this.chars[y][x]);
-
       this.events.emit("updateName", this.name);
     }
   }
 
   anyKey(event) {
-    //  Only allow A-Z . and -
-
     let code = event.keyCode;
 
     if (code === Phaser.Input.Keyboard.KeyCodes.PERIOD) {

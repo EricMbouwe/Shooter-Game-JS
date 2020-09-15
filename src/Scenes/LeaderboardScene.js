@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import config from "../Config/config";
 import Button from "../Objects/Button";
+import { getTopScores } from "../Objects/Scores";
 
 export default class LeaderboardScene extends Phaser.Scene {
   constructor() {
@@ -17,14 +18,28 @@ export default class LeaderboardScene extends Phaser.Scene {
       .bitmapText(100, 60, "arcade", "RANK  SCORE   NAME")
       .setTint(0xff00ff);
 
-    // dynamically add scores to the table
-    this.add.bitmapText(100, 120, "arcade", "1ST   50000").setTint(0xff0000);
+    getTopScores().then((response) => {
+      const data = response.result;
+      const height = 120;
+      data
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5)
+        .map((item, i) =>
+          this.add
+            .bitmapText(
+              150,
+              `${height + (i*50)}`,
+              "arcade",
+              `${i + 1}    ${item.score}    ${item.user}`
+            )
+            .setTint(0xff0000)
+        );
+    });
 
-    // Exit
     this.ExitButton = new Button(
       this,
       config.width / 2,
-      config.height / 2 + 260,
+      config.height / 2 + 220,
       "blueButton1",
       "blueButton2",
       "Exit",
@@ -40,6 +55,6 @@ export default class LeaderboardScene extends Phaser.Scene {
       duration: 350,
     });
 
-    this.scene.launch("Starfield")
+    this.scene.launch("Starfield");
   }
 }

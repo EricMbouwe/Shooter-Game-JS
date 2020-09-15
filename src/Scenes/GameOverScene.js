@@ -1,7 +1,9 @@
 import Phaser from "phaser";
 import config from "../Config/config";
 import Button from "../Objects/Button";
+import { saveScore, setScore } from "../Objects/Scores";
 import ScrollingBackground from "../Objects/ScrollingBackground";
+import GameScene from "./GameScene";
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -15,12 +17,6 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    // sound effect object
-    this.sfx = {
-      btnOver: this.sound.add("sndBtnOver"),
-      btnDown: this.sound.add("sndBtnDown"),
-    };
-
     // add scrolling background
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -33,17 +29,11 @@ export default class GameOverScene extends Phaser.Scene {
     // start input scene
     this.scene.launch("InputPanel");
 
-    // Set the player text
-    // this.playerText = this.add
-    //   .bitmapText(580, 310, "arcade", "")
-    //   .setTint(0xff0000);
-
     this.playerText = this.add
       .bitmapText(350, 260, "arcade", "NAME", 20)
       .setTint(0xff0000);
 
-    //  Do this, otherwise this Scene will steal all keyboard input
-    this.input.keyboard.enabled = false; //input
+    this.input.keyboard.enabled = false;
 
     let panel = this.scene.get("InputPanel");
 
@@ -51,7 +41,6 @@ export default class GameOverScene extends Phaser.Scene {
     panel.events.on("updateName", this.updateName, this);
     panel.events.on("submitName", this.submitName, this);
 
-    // Title
     this.title = this.add.text(this.game.config.width * 0.5, 350, "GAME OVER", {
       fontFamily: "monospace",
       fontSize: 48,
@@ -62,7 +51,6 @@ export default class GameOverScene extends Phaser.Scene {
 
     this.title.setOrigin(0.5);
 
-    //  Restart Game
     this.RestartButton = new Button(
       this,
       config.width / 2,
@@ -73,7 +61,6 @@ export default class GameOverScene extends Phaser.Scene {
       "Game"
     );
 
-    // Exit
     this.ExitButton = new Button(
       this,
       config.width / 2,
@@ -86,17 +73,17 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   submitName() {
-    // call the score api to add the new score of the current player
+    //call the score api to add the new score of the current player
+    const score = window.game.score;
+    saveScore(score, name);
 
-    // populate the leaderboard
-    
     this.scene.stop("InputPanel");
     this.add
       .bitmapText(100, 360, "arcade", "2ND   40000    ANT")
       .setTint(0xff8200);
 
     // start the leaderboard scene
-    this.scene.start('Leaderboard')
+    this.scene.start("Leaderboard");
   }
 
   updateName(name) {

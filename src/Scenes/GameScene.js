@@ -4,6 +4,7 @@ import Player from "../Objects/Hero/Player";
 import ChaserShip from "../Objects/Enemies/ChaserShip";
 import GunShip from "../Objects/Enemies/GunShip";
 import CarrierShip from "../Objects/Enemies/CarrierShip";
+import { setScore } from "../Objects/Scores";
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -160,8 +161,9 @@ export default class GameScene extends Phaser.Scene {
 
           enemy.explode(true);
           playerLaser.destroy();
-          this.score += 100;
+          this.score = setScore(this, 100)
           this.scoreLabel.text = `SCORE ${this.score}`;
+          window.game.score = this.score;
         }
       }
     );
@@ -174,7 +176,7 @@ export default class GameScene extends Phaser.Scene {
         enemy.explode(true);
       }
     });
-    
+
     // enemyLaser vs player (2- add a collider between this.player and this.enemiesLasers)
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData("isDead") && !laser.getData("isDead")) {
