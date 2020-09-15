@@ -28,7 +28,7 @@ export default class LeaderboardScene extends Phaser.Scene {
           this.add
             .bitmapText(
               150,
-              `${height + (i*50)}`,
+              `${height + i * 50}`,
               "arcade",
               `${i + 1}    ${item.score}    ${item.user}`
             )

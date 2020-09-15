@@ -12,13 +12,11 @@ export default class TitleScene extends Phaser.Scene {
     this.scene.stop("InputPanel");
     this.scene.stop("Starfield");
 
-    // sound effect object
     this.sfx = {
       btnOver: this.sound.add("sndBtnOver"),
       btnDown: this.sound.add("sndBtnDown"),
     };
 
-    // add scrolling background
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ["sprteBg0", "sprBg0"];
@@ -27,7 +25,6 @@ export default class TitleScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    // Title
     this.title = this.add.text(
       this.game.config.width * 0.5,
       90,
@@ -41,7 +38,6 @@ export default class TitleScene extends Phaser.Scene {
       }
     ).setOrigin(0.5);
 
-    // Game
     this.gameButton = new Button(
       this,
       config.width / 2,
@@ -52,7 +48,6 @@ export default class TitleScene extends Phaser.Scene {
       "Game"
     );
 
-    // Options
     this.optionsButton = new Button(
       this,
       config.width / 2,
@@ -63,7 +58,6 @@ export default class TitleScene extends Phaser.Scene {
       "Options"
     );
 
-    // Credits
     this.creditsButton = new Button(
       this,
       config.width / 2,
@@ -74,14 +68,13 @@ export default class TitleScene extends Phaser.Scene {
       "Credits"
     );
 
-    // LeaderBoard
     this.LeaderBoardButton = new Button(
       this,
       config.width / 2,
       config.height / 2 + 200,
       "blueButton1",
       "blueButton2",
-      "Top 10",
+      "Top Scores",
       "Leaderboard"
     );
 

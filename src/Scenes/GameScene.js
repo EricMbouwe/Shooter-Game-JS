@@ -5,6 +5,7 @@ import ChaserShip from "../Objects/Enemies/ChaserShip";
 import GunShip from "../Objects/Enemies/GunShip";
 import CarrierShip from "../Objects/Enemies/CarrierShip";
 import { setScore } from "../Objects/Scores";
+import config from "../Config/config";
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -15,9 +16,8 @@ export default class GameScene extends Phaser.Scene {
     this.scene.stop("InputPanel");
 
     this.score = 0;
-    this.scoreLabel = this.add.bitmapText(10, 5, "arcade", "SCORE", 18);
+    this.scoreLabel = this.add.bitmapText(10, 5, "arcade", "SCORE 000000", 18);
 
-    // create our animations
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -46,7 +46,6 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    // add sound to variable objects
     this.sfx = {
       explosions: [
         this.sound.add("sndExplode0"),
@@ -55,15 +54,12 @@ export default class GameScene extends Phaser.Scene {
       laser: this.sound.add("sndLaser"),
     };
 
-    // initialize the scrolling background
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
-      // create five scrolling backgrounds
       const bg = new ScrollingBackground(this, "sprBg0", i * 10);
       this.backgrounds.push(bg);
     }
 
-    // create a player
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -71,7 +67,6 @@ export default class GameScene extends Phaser.Scene {
       "sprPlayer"
     );
 
-    // initialize moves key variables
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -94,7 +89,6 @@ export default class GameScene extends Phaser.Scene {
       Phaser.Input.Keyboard.KeyCodes.SPACE
     );
 
-    // allow the player to shoot
     if (this.keySpace.isDown) {
       this.player.setData("isShooting", true);
     } else {
@@ -105,15 +99,13 @@ export default class GameScene extends Phaser.Scene {
       this.player.setData("isShooting", false);
     }
 
-    // create a Group to hold our enemies, the lasers shot by enemies,
-    // and the lasers shot by the player
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
 
     // create an event (it will act as a timer) which will spawn our enemies
     this.time.addEvent({
-      delay: 1000, // this can be changed to a higher value like 1000
+      delay: 1000,
       callback() {
         let enemy = null;
 
@@ -148,7 +140,6 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    // add collisions between game objects
     // enemy vs playerLaser (1- check the state of objects)
     this.physics.add.collider(
       this.playerLasers,
@@ -161,9 +152,12 @@ export default class GameScene extends Phaser.Scene {
 
           enemy.explode(true);
           playerLaser.destroy();
-          this.score = setScore(this, 100)
-          this.scoreLabel.text = `SCORE ${this.score}`;
-          window.game.score = this.score;
+          this.score = setScore(this, 100);
+          const scoreFormated = this.zeroPad(this.score, 6);
+          this.scoreLabel.text = `SCORE ${scoreFormated}`;
+          // this.scoreLabel.text = `SCORE ${this.score}`;
+          // window.game.score = this.score;
+          window.game.score = scoreFormated;
         }
       }
     );
@@ -187,7 +181,14 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  // spawn the chaser ship
+  zeroPad(number, size) {
+    let stringNumber = String(number);
+    while (stringNumber.length < (size || 2)) {
+      stringNumber = "0" + stringNumber;
+    }
+    return stringNumber;
+  }
+
   getEnemiesByType(type) {
     const arr = [];
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {

@@ -3,7 +3,6 @@ import config from "../Config/config";
 import Button from "../Objects/Button";
 import { saveScore, setScore } from "../Objects/Scores";
 import ScrollingBackground from "../Objects/ScrollingBackground";
-import GameScene from "./GameScene";
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -17,7 +16,6 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    // add scrolling background
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ["sprBg0", "sprBg1"];
@@ -26,18 +24,16 @@ export default class GameOverScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    // start input scene
     this.scene.launch("InputPanel");
 
     this.playerText = this.add
-      .bitmapText(350, 260, "arcade", "NAME", 20)
+      .bitmapText(350, 260, "arcade", "Name", 20)
       .setTint(0xff0000);
 
     this.input.keyboard.enabled = false;
 
     let panel = this.scene.get("InputPanel");
 
-    //  Listen to events from the Input Panel scene
     panel.events.on("updateName", this.updateName, this);
     panel.events.on("submitName", this.submitName, this);
 
@@ -78,9 +74,6 @@ export default class GameOverScene extends Phaser.Scene {
     saveScore(score, name);
 
     this.scene.stop("InputPanel");
-    this.add
-      .bitmapText(100, 360, "arcade", "2ND   40000    ANT")
-      .setTint(0xff8200);
 
     // start the leaderboard scene
     this.scene.start("Leaderboard");
