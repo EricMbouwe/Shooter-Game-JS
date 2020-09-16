@@ -7,7 +7,7 @@ import ScrollingBackground from '../Objects/ScrollingBackground';
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
     super('GameOver');
-    this.playerText;
+    this.playerText = '';
   }
 
   preload() {

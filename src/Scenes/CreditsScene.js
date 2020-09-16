@@ -37,6 +37,8 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: () => this.destroy,
     });
 
+    const destroyMadeBy = () => this.madeByTween.destroy;
+
     this.madeByTween = this.tweens.add({
       targets: this.madeByText,
       y: -300,
@@ -44,7 +46,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 8000,
       delay: 1000,
       onComplete: () => {
-        this.madeByTween.destroy;
+        destroyMadeBy();
         this.scene.start('Title');
       },
     });

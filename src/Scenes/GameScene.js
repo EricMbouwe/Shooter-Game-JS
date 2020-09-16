@@ -17,6 +17,14 @@ export default class GameScene extends Phaser.Scene {
     this.score = 0;
     this.scoreLabel = this.add.bitmapText(10, 5, 'arcade', 'SCORE 0000', 18);
 
+    this.zeroPad = (number, size) => {
+      let stringNumber = String(number);
+      while (stringNumber.length < (size || 2)) {
+        stringNumber = `0${stringNumber}`;
+      }
+      return stringNumber;
+    };
+
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -172,14 +180,6 @@ export default class GameScene extends Phaser.Scene {
         laser.destroy();
       }
     });
-  }
-
-  zeroPad(number, size) {
-    let stringNumber = String(number);
-    while (stringNumber.length < (size || 2)) {
-      stringNumber = `0${stringNumber}`;
-    }
-    return stringNumber;
   }
 
   getEnemiesByType(type) {
