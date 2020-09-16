@@ -46,14 +46,7 @@ export default class InputPanelScene extends Phaser.Scene {
     text.on("pointermove", this.moveBlock, this);
     text.on("pointerup", this.pressKey, this);
 
-    // this.input.keyboard.on("keyup_LEFT", this.moveLeft, this);
-    // this.input.keyboard.on("keyup_RIGHT", this.moveRight, this);
-    // this.input.keyboard.on("keyup_UP", this.moveUp, this);
-    // this.input.keyboard.on("keyup_DOWN", this.moveDown, this);
-    // this.input.keyboard.on("keyup_ENTER", this.pressKey, this);
-    // this.input.keyboard.on("keyup_SPACE", this.pressKey, this);
-
-    // this.input.keyboard.on("keyup", this.anyKey, this);
+    this.input.keyboard.on("keyup", this.anyKey, this);
   }
 
   moveBlock(pointer, x, y) {

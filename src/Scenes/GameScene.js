@@ -102,7 +102,6 @@ export default class GameScene extends Phaser.Scene {
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
 
-    // create an event (it will act as a timer) which will spawn our enemies
     this.time.addEvent({
       delay: 600,
       callback() {
@@ -139,7 +138,6 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    // enemy vs playerLaser (1- check the state of objects)
     this.physics.add.collider(
       this.playerLasers,
       this.enemies,
@@ -159,7 +157,6 @@ export default class GameScene extends Phaser.Scene {
       }
     );
 
-    // enemy vs playerLaser (2- add a collider between this.player and this.enemies)
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData("isDead") && !enemy.getData("isDead")) {
         player.explode(false);
@@ -168,7 +165,6 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
-    // enemyLaser vs player (2- add a collider between this.player and this.enemiesLasers)
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData("isDead") && !laser.getData("isDead")) {
         player.explode(false);
@@ -231,7 +227,6 @@ export default class GameScene extends Phaser.Scene {
       const enemy = this.enemies.getChildren()[i];
       enemy.update();
 
-      // add frustum culling to avoid lagging
       if (
         enemy.x < -enemy.displayWidth ||
         enemy.x > this.game.config.width + enemy.displayWidth ||
