@@ -103,9 +103,9 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     this.load.image("sprLaserEnemy0", "assets/sprLaserEnemy0.png");
     this.load.image("sprLaserPlayer", "assets/sprLaserPlayer.png");
-    this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
+    this.load.spritesheet("sprPlayer", "assets/ship.png", {
       frameWidth: 16,
-      frameHeight: 16,
+      frameHeight: 24,
     });
 
     this.load.audio("sndExplode0", "assets/Explosion+2.mp3");

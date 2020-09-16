@@ -154,7 +154,7 @@ Game scenes:
 
 ## Live Version
 
-[GitHub Pages](https://ericmbouwe.github.io/shooter-game-js/)
+[Demo LIVE](https://raw.githack.com/EricMbouwe/Shooter-Game-JS/game-logic/webpack/dist/index.html)
 
 <hr/>
 

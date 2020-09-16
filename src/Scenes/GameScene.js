@@ -15,7 +15,7 @@ export default class GameScene extends Phaser.Scene {
     this.scene.stop("InputPanel");
 
     this.score = 0;
-    this.scoreLabel = this.add.bitmapText(10, 5, "arcade", "SCORE 000000", 18);
+    this.scoreLabel = this.add.bitmapText(10, 5, "arcade", "SCORE 0000", 18);
 
     this.anims.create({
       key: "sprEnemy0",
@@ -104,7 +104,7 @@ export default class GameScene extends Phaser.Scene {
 
     // create an event (it will act as a timer) which will spawn our enemies
     this.time.addEvent({
-      delay: 1000,
+      delay: 600,
       callback() {
         let enemy = null;
 
@@ -152,7 +152,7 @@ export default class GameScene extends Phaser.Scene {
           enemy.explode(true);
           playerLaser.destroy();
           this.score = setScore(this, 100);
-          const scoreFormated = this.zeroPad(this.score, 6);
+          const scoreFormated = this.zeroPad(this.score, 4);
           this.scoreLabel.text = `SCORE ${scoreFormated}`;
           window.game.score = scoreFormated;
         }

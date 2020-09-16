@@ -27,8 +27,9 @@ export default class GameOverScene extends Phaser.Scene {
     this.scene.launch("InputPanel");
 
     this.playerText = this.add
-      .bitmapText(350, 260, "arcade", "Name", 20)
-      .setTint(0xff0000);
+      .bitmapText(390, 260, "arcade", "Enter your name", 20)
+      .setTint(0xff0000)
+      .setOrigin(0.5);
 
     this.input.keyboard.enabled = false;
 
@@ -69,14 +70,11 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   submitName() {
-    //call the score api to add the new score of the current player
     const score = window.game.score;
-    const name = this.playerText.text; 
+    const name = this.playerText.text;
     saveScore(score, name);
 
     this.scene.stop("InputPanel");
-
-    // start the leaderboard scene
     this.scene.start("Leaderboard");
   }
 

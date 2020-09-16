@@ -23,14 +23,14 @@ export default class LeaderboardScene extends Phaser.Scene {
       const height = 120;
       data
         .sort((a, b) => b.score - a.score)
-        .slice(0, 5)
+        .slice(0, 10)
         .map((item, i) =>
           this.add
             .bitmapText(
               150,
-              `${height + i * 50}`,
+              `${height + i * 40}`,
               "arcade",
-              `${i + 1}    ${item.score}    ${item.user}`
+              `${i + 1}    ${item.score}   ${item.user}`
             )
             .setTint(0xff0000)
         );
@@ -39,7 +39,7 @@ export default class LeaderboardScene extends Phaser.Scene {
     this.ExitButton = new Button(
       this,
       config.width / 2,
-      config.height / 2 + 220,
+      config.height / 2 + 250,
       "blueButton1",
       "blueButton2",
       "Exit",

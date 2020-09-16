@@ -5,7 +5,7 @@ export function setScore(game, data) {
   return game.score + data;
 }
 
-export async function saveScore(score, name) {
+export async function saveScore(score, user) {
   const data = {
     method: "POST",
     headers: {
@@ -13,10 +13,15 @@ export async function saveScore(score, name) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name,
+      user,
       score,
     }),
   };
+
+  await fetch(url, data)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 }
 
 export async function getTopScores() {
