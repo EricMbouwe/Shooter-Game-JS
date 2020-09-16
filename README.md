@@ -68,27 +68,22 @@ This is an arcade Shooter Game application where the player mission is to shoot 
 
 ### Entry Scene
 
-<img src="src/screenshots/entry.png" alt="entry.png">
+<img src="src/assets/screenshots/main.png" alt="main.png">
 <hr />
 
 ### Battle Scene
 
-<img src="src/screenshots/battle.png" alt="battle.png">
+<img src="src/assets/screenshots/battle.png" alt="battle.png">
 <hr />
 
 ### Game Over Scene
 
-<img src="src/screenshots/gameover.png" alt="gameover.png">
-<hr />
-
-### Game Over Scene User Name Input
-
-<img src="src/screenshots/input.png" alt="input.png">
+<img src="src/assets/screenshots/gameover.png" alt="gameover.png">
 <hr />
 
 ### Leadersboard Scene
 
-<img src="src/screenshots/leadersboard.png" alt="leadersboard.png">
+<img src="src/assets/screenshots/scores.png" alt="scores.png">
 <hr />
 <!-- ABOUT THE PROJECT -->
 
