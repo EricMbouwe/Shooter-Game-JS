@@ -5,7 +5,6 @@ import ChaserShip from "../Objects/Enemies/ChaserShip";
 import GunShip from "../Objects/Enemies/GunShip";
 import CarrierShip from "../Objects/Enemies/CarrierShip";
 import { setScore } from "../Objects/Scores";
-import config from "../Config/config";
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -155,8 +154,6 @@ export default class GameScene extends Phaser.Scene {
           this.score = setScore(this, 100);
           const scoreFormated = this.zeroPad(this.score, 6);
           this.scoreLabel.text = `SCORE ${scoreFormated}`;
-          // this.scoreLabel.text = `SCORE ${this.score}`;
-          // window.game.score = this.score;
           window.game.score = scoreFormated;
         }
       }

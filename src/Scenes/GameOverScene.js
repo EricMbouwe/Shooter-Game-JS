@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import config from "../Config/config";
 import Button from "../Objects/Button";
-import { saveScore, setScore } from "../Objects/Scores";
+import { saveScore } from "../Objects/Scores";
 import ScrollingBackground from "../Objects/ScrollingBackground";
 
 export default class GameOverScene extends Phaser.Scene {
@@ -71,6 +71,7 @@ export default class GameOverScene extends Phaser.Scene {
   submitName() {
     //call the score api to add the new score of the current player
     const score = window.game.score;
+    const name = this.playerText.text; 
     saveScore(score, name);
 
     this.scene.stop("InputPanel");
