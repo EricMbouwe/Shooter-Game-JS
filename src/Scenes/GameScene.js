@@ -111,7 +111,7 @@ export default class GameScene extends Phaser.Scene {
     this.playerLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 600,
+      delay: 700,
       callback() {
         let enemy = null;
 

@@ -5,11 +5,11 @@ export function setScore(game, data) {
   return game.score + data;
 }
 
-function format(data) {
+export function format(data) {
   return data;
 }
 
-function handleError(e) {
+export function handleError(e) {
   return e.message;
 }
 
