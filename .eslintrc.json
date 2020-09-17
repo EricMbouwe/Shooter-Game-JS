@@ -2,31 +2,18 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
     "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "extends": [
-    "airbnb-base"
-  ],
+  "extends": ["airbnb-base"],
   "rules": {
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
-    "arrow-parens": "off",
-    "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ]
+    "arrow-parens": "off"
   },
-  "ignorePatterns": [
-    "dist/",
-    "build/"
-  ]
+  "ignorePatterns": ["dist/", "build/"]
 }

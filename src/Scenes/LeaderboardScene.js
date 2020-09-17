@@ -23,11 +23,11 @@ export default class LeaderboardScene extends Phaser.Scene {
       const height = 120;
       data
         .sort((a, b) => b.score - a.score)
-        .slice(0, 5)
+        .slice(0, 7)
         .map((item, i) => this.add
           .bitmapText(
             150,
-            `${height + i * 40}`,
+            `${height + i * 50}`,
             'arcade',
             `${i + 1}    ${item.score}   ${item.user}`,
           )
