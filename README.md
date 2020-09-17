@@ -56,10 +56,10 @@ This is an arcade Shooter Game application where the player mission is to shoot 
 - [Screen Shots](#screen-shots)
 - [About the Project](#about-the-project)
 - [Application Instructions](#application-instructions)
+- [How to play](#how-to-play)
 - [Live Version](#live-version)
 - [System Requierments](#system-requierments)
-- [Development](#development)
-- [Dependencies](#dependencies)
+- [Development and Dependencies](#development-and-dependencies)
 - [Built With](#built-with)
 - [Contributors](#contributors)
 - [Acknowledgements](#acknowledgements)
@@ -146,6 +146,18 @@ Game scenes:
 - The LeadersBoard scene shows only the top 10 scores
 
 <hr/>
+
+## How to play
+
+The Hero needs to kill enemies, avoid them and their lazers
+
+### Control's
+
+- (←) left arrow key => Move left
+- (→) right arrow key => Move right
+- (↑) up arrow key => Mpve up
+- (↓) down arrow key => Move down
+- (Space) key => Attack enemy
 
 ## Live Version
 
