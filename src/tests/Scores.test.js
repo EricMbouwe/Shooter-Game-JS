@@ -30,10 +30,10 @@ describe('the game public functions', () => {
     });
   });
 
-  it("fails to send score to the api without score", () => {
-    saveScore("dan").then((data) => {
+  it('fails to send score to the api without score', () => {
+    saveScore('dan').then((data) => {
       expect(data.result).toBe(
-        "You need to provide a valid score for the leaderboard"
+        'You need to provide a valid score for the leaderboard',
       );
     });
   });
